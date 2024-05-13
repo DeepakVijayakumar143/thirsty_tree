@@ -13,11 +13,20 @@ export const SplitButton = ({ setFilter, options }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-
   const handleClick = () => {
     setFilter(options[selectedIndex]);
-  };
 
+    // console.log("clicked");
+    // const firstLine = view.state.doc.line(lineNumber);
+    // const { top } = view.coordsAtPos(firstLine.from); // can return null
+
+    // view.scrollDOM.scrollTo({ top, behavior: "smooth" });
+    // const content = document.querySelector(".cm-content");
+    // const lines = content.querySelectorAll(".cm-line");
+    // lines.forEach((line) => {
+    //   console.log(typeof line.textContent, line.textContent);
+    // });
+  };
   const handleMenuItemClick = (event, index) => {
     setFilter(options[index]);
     setSelectedIndex(index);
@@ -43,8 +52,11 @@ export const SplitButton = ({ setFilter, options }) => {
         ref={anchorRef}
         aria-label="Button group with a nested menu"
       >
+        {/* {console.log(options[selectedIndex])} */}
         <Button onClick={handleClick}>
-          {options[selectedIndex] || "parent"}
+          {typeof options[selectedIndex] === String
+            ? options[selectedIndex]
+            : "parent"}
         </Button>
         <Button
           size="small"
