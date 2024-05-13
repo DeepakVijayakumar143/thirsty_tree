@@ -60,7 +60,6 @@ export const countChildren = (jsonObj, level = 1, prefix = "", result = {}) => {
       result[currentPrefix] = 0;
     }
   }
-  console.log(allLevelArray);
   return allLevelArray;
 };
 
